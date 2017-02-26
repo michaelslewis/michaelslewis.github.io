@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic Bootstrap Template -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Yelp API How-To Guide</title>
+  <!-- Bootstrap Latest compiled and minified CSS
+  <    Source: getbootstrap.com/getting-started -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Bootstrap Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="yelpHowTo.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default">
+      <ul class="nav navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="page1.html">Welcome</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="page2.html">Getting Started</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="page3.html">Making Requests</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="page4.html">Yelp's Search API</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="page5.html">Getting Responses</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="page6.html">Additional Resources</a>
+        </li>
+      </ul>
+    </nav>
+    <p>
+
+  <div class = "container" id="body">
+
+  <div>
+    <p>
+
+  <h2 class="sectionHead" id="gettingResponses">JSON and the query response</h2>
+  <p class="lead">
+      On the previous page, we modified our search in an attempt to retrieve information on Tian Fu Noodle, located in Corvallis. Until now, the response to that request, and especially to the earlier 'food' query, have appeared as lengthy blobs of semi-formatted text that is relatively difficult to read. On this page, we will attempt to decipher those results.
+
+      <br><br>
+
+      I had initially noticed the Tian Fu Noodle restaurant as its name was the very first result out of 289 businesses that were returned in our original 'food' query. As an e-Campus student and a noodle-lover, I would like to know more about this restaurant for any visits I may make to Oregon State University in the future. The data that is returned to us from our query arrives in the <mark>JSON</mark> format, which, although not identical, is very close to the JavaScript Object Notation that we used to formulate the parameters of our queries.
+
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+    <h3 class="panel-title">Code sample: Response from query for 'Tian Fu Noodle' in 'Corvallis':</h3>
+      </div>
+      <div class="panel-body">
+
+      <iframe height="550" src="http://jsfiddle.net/mikey811fiddle/8p1o0s28/embedded/html/dark/" allowfullscreen="allowfullscreen"></iframe>
+
+      <br><br>
+
+      Please scroll through the code above while observing the parameter/value pairs that were returned. Much of the data may look familar, such as the address, telephone number, and the star rating. As noted previously, Yelp provides an index to the search parameters in the <a href ="https://www.yelp.com/developers/documentation/v2/search_api/"> Search API </a> tab of their documentation page.
+        <br><br>
+
+        <div class="alert alert-danger" role="alert">
+        Note that JSON data can be parsed and organized for an application, such as a mobile app, so that a user may have immediate and efficient access to any of these fields.
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- JQuery CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Bootstrap CDN -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- Personal JS file -->
+  <script src="how-to-guide.js"></script>
+
+    <footer>
+      <div class="container">               
+        <ul class="pager">
+          <li><a href="page4.html">Back</a></li>
+          <li><a href="page6.html">Next</a></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,219 @@
+body {
+  background-color: #0000FF;
+  padding-top: 20px;
+}
+
+header {
+  background-color: aliceblue;
+}
+
+.content {
+  text-align:justify;
+}
+
+.navbar-nav {
+  float:none;
+  margin:0 auto;
+  display: block;
+  text-align: center;
+  transition: all 0.3s; /* Provides a short transition period for hover effect */
+}
+
+.navbar-default {
+  max-width: max-content;
+  max-width: -moz-max-content;
+  max-width: intrinsic;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navbar-nav > li {
+  display: inline-block;
+  float:none;
+  background-color: lightcyan;
+}
+
+.nav-item {
+  width: 13em;
+  font-weight: bold;
+  color: black;
+}
+
+.nav-item:hover {
+    background: cyan; color: lightcyan;
+} /* Cell is highlighted if hovered over */
+
+
+.jumbotron {
+  text-align: center;
+  background-color: lightcyan;
+  border-radius: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.jumboText {
+  background-color: white;
+  max-width: max-content;
+  max-width: -moz-max-content;
+  max-width: intrinsic;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  border: solid cyan;
+  border-radius: 5px;
+}
+
+.byline {
+  padding-bottom: 10px;
+}
+
+.courseID {
+  font-weight: bold;
+}
+
+.dl-horizontal {
+  font-size: 20px;
+  padding: 20px;
+  text-align: justify;
+  text-align: left;
+}
+
+.lead {
+  padding: 20px;
+  padding-bottom: 0;
+}
+
+#body {
+  outline-color: black;
+  background-color: lightcyan;
+}
+
+.sectionHead {
+  max-width: max-content;
+  max-width: -moz-max-content;
+  max-width: intrinsic;
+  margin-top: 40px;
+  padding: 10px;
+  background-color: aliceblue;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  border: solid cyan;
+  border-radius: 5px;
+}
+
+a {
+  color: blue;
+}
+
+a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+dt {
+  margin-top: 10px;
+}
+
+dd {
+  margin-top: 10px;
+  text-align: justify;
+}
+
+pre {
+  width:50%;
+}
+
+iframe {
+  width: 100%;
+  border: 0;
+}
+.btn {
+    padding: 3px 5px;
+    border: 0 none;
+    letter-spacing: 1px;
+    border-radius: 5px;
+}
+ 
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+ 
+.btn-info {
+    background: blue;
+    color: white;
+}
+ 
+.btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open > .dropdown-toggle.btn-info {
+    background: #33a6cc;
+}
+ 
+.btn-info:active, .btn-info.active {
+    background: #007299;
+    box-shadow: none;
+}
+
+.yelpDev {
+  display: block;
+  margin: auto;
+}
+
+.panel.panel-default {
+    padding: 20px;
+    border-color: cyan;
+    border-width: 3px;
+}
+
+.panel-title {
+  font-weight:bold;
+}
+
+.col-md-8 {
+  background-color: aliceblue;
+}
+
+.apiKeyList li{
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+mark {
+    background-color: aqua;
+    color: black;
+    padding: 0;
+}
+
+p {
+  text-align: justify;
+}
+
+.workup {
+  text-indent: 2em;
+  font-style: italic;
+  margin-bottom: 40px;
+}
+
+.wordup {
+  font-weight: bold;
+}
+
+pre {
+  width: 95%;
+  background-color: aliceblue;
+  border-color: cyan;
+  border-width: 3px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.container {
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.footer {
+  margin: auto;
+}

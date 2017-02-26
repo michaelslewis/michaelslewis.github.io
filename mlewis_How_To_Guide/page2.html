@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic Bootstrap Template -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Yelp API How-To Guide</title>
+  <!-- Bootstrap Latest compiled and minified CSS
+  <    Source: getbootstrap.com/getting-started -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Bootstrap Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="yelpHowTo.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default">
+      <ul class="nav navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="page1.html">Welcome</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="page2.html">Getting Started</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="page3.html">Making Requests</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="page4.html">Yelp's Search API</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="page5.html">Getting Responses</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="page6.html">Additional Resources</a>
+        </li>
+      </ul>
+    </nav>
+    <p>
+
+  <div class = "container" id="body">
+
+  <div>
+    <p>
+
+  <h2 class="sectionHead" id="gettingStarted">Yelp API v2.0</h2>
+
+  <img class="yelpDev" src="https://s3-media2.fl.yelpcdn.com/assets/srv0/developer_pages/16147800feff/assets/img/top_shelf/documentation.png" alt="Yelp bookshelf">
+
+  <dl class="dl-horizontal">
+  <dt>About:</dt><dd>Currently, Yelp offers v2.0 of its API, which allows for searching businesses. While this guide focuses on v2.0 and this is still supported by Yelp at the time of this writing, Yelp is in the process of transitioning to a newer v3.0 API, dubbed "Yelp Fusion". Fusion is beyond the scope of this guide, as it has added requirements for developers in order to access the API, such as submitting the URL of the app under development.</dd>
+
+  <dt>Access:</dt><dd>In order to incorporate the Yelp API into your web application, it is necessary to register to get an authentication key. This process is free and the link for managing your Yelp authentication is <a href ="https://www.yelp.com/developers/v2/manage_api_keys">here.</a> It will first be necessary to create a Yelp account, which is itself a simple and free process. Once you have signed up, simply return to the above link, and click on the button that reads "Generate new API v2.0 token/secret". This will provide you with a unique "Consumer Key" and "Token", which will be detailed further below. Your unique information will be available whenever you access this page, as long as you are signed into the site. As the site states, it is important that you never share the key or token with anyone. Your authentication allows for a limited number of API calls per day, and anyone who gets your information would be able to use it. Fortunately, if needed, a new key and token can be generated if needed by clicking on that button again. 
+
+  <br><br>Unfortunately, the Yelp authentication process is a bit more tricky than that of some other API's. It uses the OAuth 1.0a protocol, which requires several parameters, including the key and token, to be submitted with each request to the API. Not to worry, guidance for making a call will be provided on the next page.
+  </dl>
+
+  <img class="yelpDev" src=https://s3-media2.fl.yelpcdn.com/assets/srv0/developer_pages/a047cc5a6644/assets/img/458x230_api.png alt="Yelp Supercomputer">
+
+  <p></p>
+
+  </div>
+
+</div>
+
+  <!-- JQuery CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Bootstrap CDN -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- Personal JS file -->
+  <script src="how-to-guide.js"></script>
+
+    <footer>
+      <div class="container">               
+        <ul class="pager">
+          <li><a href="page1.html">Back</a></li>
+          <li><a href="page3.html">Next</a></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

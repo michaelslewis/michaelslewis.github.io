@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic Bootstrap Template -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Yelp API How-To Guide</title>
+  <!-- Bootstrap Latest compiled and minified CSS
+  <    Source: getbootstrap.com/getting-started -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Bootstrap Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="yelpHowTo.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default">
+      <ul class="nav navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="page1.html">Welcome</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="page2.html">Getting Started</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="page3.html">Making Requests</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="page4.html">Yelp's Search API</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="page5.html">Getting Responses</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="page6.html">Putting it All Together</a>
+        </li>
+      </ul>
+    </nav>
+    <p>
+
+  <div class = "container" id="body">
+
+  <div>
+    <p>
+
+  <h2 class="sectionHead" id="gettingResponses"> Yelp's Search API</h2>
+  <p class="lead">
+      While the sample code on the previous page was very basic, returning relatively broad results of 'food' and then 'Chinese food' located in 'Corvallis', primarily as a means to demonstrate the setup of OAuth, the Yelp Search API provides a myriad of parameters to allow us to further refine our results. Yelp provides these parameters in the <a href ="https://www.yelp.com/developers/documentation/v2/search_api/"> Search API </a> tab of their documentation page.
+
+      <br><br>
+      For the most part, asid from setting the 'location' parameter, the 'term' parameter will likely be our most commonly used parameter. This can be set to general values such as the 'food' search from the previous sample code. But Yelp becomes much more powerful when we refine or combine terms. For example, instead of the term 'food', we could specify 'Chinese food'. Or we could specify a known establishment, such as "Tian Fu Noodle", in order to retrieve a response that gives ratings, reviews, and other useful information, just for that specific business.
+
+      <br>
+
+      <dl class="dl-horizontal">
+      <dt>About Ajax</dt>
+      <dd>When we run our search, it is processed asynchronously, using Ajax (Asynchronous Javascript and XML). Ajax is popular because it allows a GET request from the client to be made to the server and processed simultaneously, as the rest of the page loads. One of the main benefits is efficiency. For example, if we run a search, and then change a portion of that and run a subsequent search, that second search does not need to reload all of the information, only the part that was changed. In contrast with searches that are merely synchronous, asynchronous calls can load much faster, which may result in a much better experience for the end user.
+       </dd>
+      </dl>
+
+    <p class="lead">
+    Now, let's formulate a request to view the information that we retrieved from the call to the Yelp Search API. This time, we will use the search term 'Tian Fu Noodle', again keeping our location as 'Corvallis', in order to search for this specific restaurant. Again, I will demonstrate the code for this below on jsfiddle.net: 
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+    <h3 class="panel-title">Code sample: Search for 'Tian Fu Noodle' in 'Corvallis' by submitting a GET request through Yelp's Search API:</h3>
+      </div>
+      <div class="panel-body">
+
+      <iframe height="550" src="http://jsfiddle.net/mikey811fiddle/w6zkow3k/4/embedded/js/dark/" allowfullscreen="allowfullscreen"></iframe>
+
+      <br>
+
+        Calling the above function will generate a URL as follows, with the "####" subsitituted by our personalized, unique values, as appropriate:
+
+        <br><br>
+        Base URL: <code>https://api.yelp.com/v2/search?</code><br>
+        Search parameters: <code>term=Tian+Fu+Noodle&location=Corvallis</code><br><br>
+
+        <div><pre><var>Final URL</var>: <var> https://api.yelp.com/v2/search?term=Tian+Fu+Noodle&amp;location=Corvallis&amp;%oauth_token_secret=####&amp;oauth_consumer_secret=####&amp;oauth_consumer_key=####&amp;oauth_token=####&amp;oauth_signature_method=####&amp;oauth_signature=####&amp;%oauth_timestamp=####&amp;%oauth_nonce=####</var></pre></div>
+
+      <br><br>
+
+        <div class="alert alert-danger" role="alert">Notice how again in this sample code, we have changed only the contents of the defaultParameters object from how it appeared in our previous sample code. In this case, we have used the term "Tian Fu Noodle". As before, by modifying or adding parameters to this JavaScript object, we have changed our search result.</div>
+
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- JQuery CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Bootstrap CDN -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- Personal JS file -->
+  <script src="how-to-guide.js"></script>
+
+
+<footer>
+  <div class="container">               
+    <ul class="pager">
+      <li><a href="page3.html">Back</a></li>
+      <li><a href="page5.html">Next</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>
