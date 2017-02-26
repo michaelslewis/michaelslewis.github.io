@@ -37,6 +37,7 @@ header {
   width: 13em;
   font-weight: bold;
   color: black;
+  border: aqua;
 }
 
 .nav-item:hover {
