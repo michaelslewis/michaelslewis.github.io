@@ -130,6 +130,7 @@ pre {
 iframe {
   width: 100%;
   border: 0;
+  margin: auto;
 }
 .btn {
     padding: 3px 5px;
@@ -159,6 +160,7 @@ iframe {
 .yelpDev {
   display: block;
   margin: auto;
+  width: auto;
 }
 
 .panel.panel-default {
@@ -191,6 +193,10 @@ iframe {
 
 .split {
   display: inline;
+  word-wrap: break-word
+}
+
+.splitNoInline {
   word-wrap: break-word
 }
 
