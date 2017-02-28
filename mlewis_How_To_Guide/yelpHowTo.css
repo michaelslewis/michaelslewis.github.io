@@ -85,6 +85,7 @@ header {
   padding-bottom: 0;
 }
 
+
 #body {
   outline-color: black;
   background-color: lightcyan;
@@ -179,6 +180,28 @@ iframe {
   padding-bottom: 10px;
 }
 
+.urlStyle {
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.sameLine {
+  display: inline-block;
+}
+
+.split {
+  display: inline;
+  word-wrap: break-word
+}
+
+.paramList {
+  font-weight: bold;
+}
+
+.inlineImage {
+  display: inline-block;
+}
+
 mark {
     background-color: aqua;
     color: black;
@@ -206,6 +229,7 @@ pre {
   border-width: 3px;
   margin: auto;
   margin-top: 10px;
+  font-weight: bold;
 }
 
 .container {

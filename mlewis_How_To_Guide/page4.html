@@ -50,21 +50,57 @@
 
   <h2 class="sectionHead" id="gettingResponses"> Yelp's Search API</h2>
   <p class="lead">
-      While the sample code on the previous page was very basic, returning relatively broad results of 'food' and then 'Chinese food' located in 'Corvallis', primarily as a means to demonstrate the setup of OAuth, the Yelp Search API provides a myriad of parameters to allow us to further refine our results. Yelp provides these parameters in the <a href ="https://www.yelp.com/developers/documentation/v2/search_api/"> Search API </a> tab of their documentation page.
-
-      <br><br>
-      For the most part, asid from setting the 'location' parameter, the 'term' parameter will likely be our most commonly used parameter. This can be set to general values such as the 'food' search from the previous sample code. But Yelp becomes much more powerful when we refine or combine terms. For example, instead of the term 'food', we could specify 'Chinese food'. Or we could specify a known establishment, such as "Tian Fu Noodle", in order to retrieve a response that gives ratings, reviews, and other useful information, just for that specific business.
+      While the sample code on the previous page was very basic, returning relatively broad results of 'food' located in 'Corvallis', primarily as a means to demonstrate the setup of OAuth, the Yelp Search API provides a myriad of parameters to allow us to further refine our results. Yelp provides these parameters in the <a href ="https://www.yelp.com/developers/documentation/v2/search_api/"> Search API </a> tab of their documentation page.
 
       <br>
 
       <dl class="dl-horizontal">
       <dt>About Ajax</dt>
-      <dd>When we run our search, it is processed asynchronously, using Ajax (Asynchronous Javascript and XML). Ajax is popular because it allows a GET request from the client to be made to the server and processed simultaneously, as the rest of the page loads. One of the main benefits is efficiency. For example, if we run a search, and then change a portion of that and run a subsequent search, that second search does not need to reload all of the information, only the part that was changed. In contrast with searches that are merely synchronous, asynchronous calls can load much faster, which may result in a much better experience for the end user.
+      <dd>When we run our search, it is processed asynchronously, using Ajax. Ajax stands for <mark>Asynchronous Javascript and XML</mark>, but for our purposes, the "Asynchronous JavaScript" part is the most relevant aspect of the name. While the response data can be received in the format of <mark>XML</mark>, we will be using <mark>JSON</mark> (more about this on the following page). The Ajax technology is popular because it allows a GET request from the client to be made to the server and processed simultaneously, as the rest of the page loads. One of the main benefits is efficiency. For example, if we run a search, and then change a portion of that and run a subsequent search, that second search does not need to reload all of the information, only the part that was changed. In contrast with searches that are merely synchronous, asynchronous calls can load much faster, which may result in a much better experience for the end user.
        </dd>
       </dl>
 
     <p class="lead">
-    Now, let's formulate a request to view the information that we retrieved from the call to the Yelp Search API. This time, we will use the search term 'Tian Fu Noodle', again keeping our location as 'Corvallis', in order to search for this specific restaurant. Again, I will demonstrate the code for this below on jsfiddle.net: 
+      For the most part, aside from setting the 'location' parameter, the 'term' parameter will likely be our most commonly used parameter. This can be set to general values such as the 'food' search from the previous sample code. But Yelp becomes much more powerful when we refine or combine terms. For example, instead of the term 'food', we could specify 'Chinese food'. 
+
+      In the following sample code, we will conduct a more advanced search, where we constrain our search to only "Chinese Restaurants". We will also use the additional 'limit' parameter to narrow the number of results returned to only '10' restaurants. Furthermore, we will set the 'sort' parameter to a value of '2', which will return our restaurants in order of the highest rated. Lastly, we will use the 'radius_filter' parameter with a value of '8000'. This last parameter measures a distance from the center of the specified location, and returns only those businesses within that radius. Since it is measured in meters, our value of '8000' will limit the results to restaurants within approximately 5 miles of Corvallis:</div><br>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+    <h3 class="panel-title">Code sample: Search for 'Chinese food' within '8000' meters of 'Corvallis', limited to '10' results, sorted by '2' (highest rating, descending):</h3>
+      </div>
+      <div class="panel-body">
+
+      <iframe width="100%" height="550" src="https://jsfiddle.net/mikey811fiddle/w8r744gL/embedded/js/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+      <br>
+      <p class="lead">
+
+        Calling the above function will generate a URL as follows:
+      </p>
+
+      <div class="urlStyle">
+        Base URL: <code>https://api.yelp.com/v2/search?</code><br>
+        Search parameters: <code>Chinese+food&location=Corvallis&sort=2&limit=10&radius_filter=8000</code><br>
+        <span class="split">Authentication data: <code>oauth_token_secret=####&oauth_consumer_secret=####&oauth_consumer_key=####&oauth_token=####&oauth_signature_method=####&oauth_signature=####&oauth_timestamp=####&oauth_nonce=####</code><span><br><br>
+      </div>
+
+        <div><pre><var>Final URL</var>: <var> https://api.yelp.com/v2/search?term=Chinese+food&amp;location=Corvallis&amp;sort=2&amp;limit=10&amp;radius_filter=8000&amp;oauth_token_secret=####&amp;oauth_consumer_secret=####&amp;oauth_consumer_key=####&amp;oauth_token=####&amp;oauth_signature_method=####&amp;oauth_signature=####&amp;oauth_timestamp=####&amp;oauth_nonce=####</var></pre></div>
+
+        <br><br>
+        <div class="alert alert-danger" role="alert">Our parameter/value pairs are defined within a JavaScript object, using <mark>JavaScript Object Notation</mark>. Remember to separate each parameter/value pair by a comma. Also, please note that there is neither a comma nor a semicolon after the last pair in the object. Lastly, while this format may appear similar to the JSON format (which we will discuss further on the next page), it is not identical. Unlike the notation we use for an object in the JavaScript language, the format used for JSON is intended for data exchange and independent of language, so it will require certain syntactical differences, including the use and placement of quotation marks.
+        </div>
+      </div>
+
+      <br>
+
+    </div>
+
+    <br>
+
+    <p class="lead">
+    In addition to searching for restaurants within a particular category such as 'Chinese food', we can also specify a known establishment, such as "Tian Fu Noodle", in order to retrieve a response that gives ratings, reviews, and other useful information, just for that specific business. In the next sample code, let's formulate a request using the search term 'Tian Fu Noodle', again keeping our location as 'Corvallis', in order to search for this specific restaurant. Again, I will demonstrate the code for this below on jsfiddle.net:
+
+    <br><br>
 
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -75,20 +111,28 @@
       <iframe width="100%" height="550" src="https://jsfiddle.net/mikey811fiddle/w6zkow3k/4/embedded/js/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
       <br>
+      <p class="lead">
 
         Calling the above function will generate a URL as follows, with the "####" subsitituted by our personalized, unique values, as appropriate:
+      </p>
 
-        <br><br>
+      <div class="urlStyle">
         Base URL: <code>https://api.yelp.com/v2/search?</code><br>
-        Search parameters: <code>term=Tian+Fu+Noodle&location=Corvallis</code><br><br>
+        Search parameters: <code>term=Tian+Fu+Noodle&location=Corvallis</code><br>
+        <span class="split">Authentication data: <code>oauth_token_secret=####&oauth_consumer_secret=####&oauth_consumer_key=####&oauth_token=####&oauth_signature_method=####&oauth_signature=####&oauth_timestamp=####&oauth_nonce=####</code><span><br><br>
+      </div>
 
-        <div><pre><var>Final URL</var>: <var> https://api.yelp.com/v2/search?term=Tian+Fu+Noodle&amp;location=Corvallis&amp;%oauth_token_secret=####&amp;oauth_consumer_secret=####&amp;oauth_consumer_key=####&amp;oauth_token=####&amp;oauth_signature_method=####&amp;oauth_signature=####&amp;%oauth_timestamp=####&amp;%oauth_nonce=####</var></pre></div>
+        <div><pre><var>Final URL</var>: <var> https://api.yelp.com/v2/search?term=Tian+Fu+Noodle&amp;location=Corvallis&amp;oauth_token_secret=####&amp;oauth_consumer_secret=####&amp;oauth_consumer_key=####&amp;oauth_token=####&amp;oauth_signature_method=####&amp;oauth_signature=####&amp;oauth_timestamp=####&amp;oauth_nonce=####</var></pre></div>
 
       <br><br>
 
         <div class="alert alert-danger" role="alert">Notice how again in this sample code, we have changed only the contents of the defaultParameters object from how it appeared in our previous sample code. In this case, we have used the term "Tian Fu Noodle". As before, by modifying or adding parameters to this JavaScript object, we have changed our search result.</div>
 
       </div>
+
+    <p class="lead">
+      We should now be able to formulate a search, send it as a GET request, and receive the JSON response. Through our examples, we have narrowed our search from nearly 300 restaurants, to a single restaurant that fit the criteria of what we were looking for, with a very promising 5-star rating. I hope that this guide may help you if you whether you are specifically interested in the Yelp Search API, API’s in general, or looking for some delicious food while visiting Oregone State University. I look forward to an opportunity in the near future where I may visit the campus in Corvallis, so that I may be able to taste this result!
+
       </div>
     </div>
 

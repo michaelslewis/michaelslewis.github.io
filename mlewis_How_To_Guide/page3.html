@@ -50,42 +50,50 @@
 
   <h2 class="sectionHead" id="yelpSearch"> Setting up a request</h2>
   <p class="lead">
-    After registering for the OAuth information on the previous page, we are ready to set up a function that will generate the necessary information to include in the URL for a call to the API.
+    After registering for the Yelp API's authentication information on the previous page, we are ready to set up a function that will generate the necessary information to include in the URL for a call to the API.
   <br><br>
     As mentioned, the authentication process for Yelp may be more complicated than other API's, due to the security requirements of OAuth 1.0a. While other API's may allow for simply adding a single API key to the URL you will be generating for your request, Yelp requires several parameters, some of which will need to be auto-generated per request. There is some information for this within the code samples provided in Yelp's <a href ="https://www.yelp.com/developers/documentation/v2/examples">documentation tab.</a> However, they do not provide any information that would allow us to do this using JavaScript. Therefore, we will demonstrate how to configure a GET request as follows.
   </p>
 
   <dl class="dl-horizontal">
   <dt> GET requests </dt>
-  <dd> When making a call to Yelp's API, we are really acting as the <mark>client</mark> making a call to a specific <mark>server</mark>.
-    This method of communication is called Hyper-Text Transfer Protocol (HTTP) and the specific call that we make is a GET request.
-    In general, a GET request is a request to retrieve data, as opposed to sending data (a POST request). </dd>
+  <dd> When we communicate with, or rather, 'make a call' to an API such as Yelp's Search API, we are acting as the <mark>client</mark>. As a client, we make our call to a specific <mark>server</mark>, in this case, a server that is hosting the Yelp API. The form of communication we are using is called <mark>HTTP</mark>, which stands for Hyper-Text Transfer Protocol. This protocol allows communication between the client and the server by means of a number of different types of calls. To make queries with the Yelp API using HTTP, we will be making a type of call called a <mark>GET request</mark>. In general, a GET request is a request to retrieve data, as opposed to sending data, which is a <mark>POST request</mark>. </dd>
   </dl>
 
   <p class="lead">
-    In a GET request, the query is appended to the base url. As demonstrated below, the URL contains a base URL (url.com/?) plus a number of name/value combinations that represent the search query. Some GET requests expect several pieces of data, in which case you may have several name/value pairs. Lastly, most GET requests require an apiKey. As discussed previously, the Yelp API requires several parameters to comply with the OAuth 1.0a protocal, as follows:
+    When a client makes a GET request, the parameters and values of the client's query are added to the <mark>base URL</mark> of the API that is to be contacted. Thus, as we will see below the upcoming sample code, the final URL that is generated will contain the base URL (in our case, 'https://api.yelp.com/v2/search?') plus the appropriate number of parameter/value pairs that make up the search query. Additionally, most GET requests from an API will require an API key. However, as mentioned previously, the Yelp API key is made up of several items, some of which depend upon each other, in order to comply with the <mark>OAuth 1.0a protocol</mark>, which is a standardized framework that provides additional security, relative to other API's that may require only a single string for a key. If you followed the <a href ="https://www.yelp.com/developers/v2/manage_api_keys">link</a> from the previous page in order to set up your Yelp account, then some of these requisite items, such as your oauth_consumer_key and oauth_token, were already generated, and can be used in the script provided in the upcoming sample code. The rest of the requisite items, such as the oauth_signature and oauth_timestamp, are dependent on the items you receive from Yelp. We will use the script in the upcoming sample code to obtain those remaining items, which will then be included in the final URL. A wealth of information about the OAuth protocol can be found at the <a href ="https://oauth.net/core/1.0a/">OAuth Community Site</a>. Although we will not delve too deeply on the particulars of the protocol, the complete list of requisite OAuth items for the purpose of generating our final URL are as follows:
+
+  <br><br>
 
   <ul class="apiKeyList">
-    <li><code>oauth_consumer_key</code>: Your OAuth consumer key (from Yelp's Manage API Access).</li>
+    <li><code>oauth_consumer_key</code>: Your personal OAuth consumer key (given when we signed up for the Yelp API).</li>
 
-    <li><code>oauth_token</code>: The access token obtained (from Yelp's Manage API Access).</li>
+    <li><code>oauth_consumer_secret</code>: Your personal OAuth consumer secret (given when we signed up for the Yelp API).</li>
 
-    <li><code>oauth_signature_method</code>: HMAC-SHA1</li>
+    <li><code>oauth_token</code>: Your personal Oauth access token (given when we signed up for the Yelp API).</li>
 
-    <li><code>oauth_signature</code>: The request signature generated using the oauthtokensecret.</li>
+    <li><code>oauth_token_secret</code>: Your personal Oauth token secret (given when we signed up for the Yelp API).</li>
 
-    <li><code>oauth_timestamp</code>: Timestamp of the request, measured in seconds since the Unix epoch.</li>
+    <li><code>oauth_signature_method</code>: hmac-sha1</li>
 
-    <li><code>oauth_nonce</code>: A unique string randomly generated upon each request.</li>
+    <li><code>oauth_signature</code>: The request signature generated using both our consumer and token secrets (we obtain this using a function, as in our sample code, below).</li>
+
+    <li><code>oauth_timestamp</code>: A timestamp of the request, measured in seconds since the Unix epoch (this is the time 00:00:00 UTC on 1 January 1970).</li>
+
+    <li><code>oauth_nonce</code>: This will be a unique string that is randomly generated upon each request.</li>
   </ul>
     <br>
 
-    The sheer length of the URL, in addition to the necessity of autogenerating particulars such as the signature and timestamp each time the API is called, making the call difficult and impractical to formulate without the specialized JavaScript function that we will discuss shortly. However, if we were to examine the URL that is to be sent, it would appear similar to what follows, substituting a unique value wherever "####" appears:
-    <div><pre><var> URL </var> = <var> url.com/? </var> + <var> &amp;name1=value1</var> + <var> &amp;name2=value2</var> + <var> &amp;oauth_token_secret=####</var> + <var> &amp;oauth_consumer_secret=####</var> + <var> &amp;oauth_consumer_key=####</var> + <var> &amp;oauth_token=####</var> + <var> &amp;oauth_signature_method=####</var> + <var> &amp;oauth_signature=####</var> + <var> &amp;oauth_timestamp=####</var> + <var> &amp;oauth_nonce=####</var></pre></div>
+    <p class="lead">These items may seem somewhat daunting. The sheer length of the URL, in addition to the necessity of autogenerating particulars such as the signature and timestamp each time the API is called, make the call difficult and impractical to formulate without the specialized JavaScript function depicted in the sample code, below. However, if we were to examine the URL that is to be sent, it would appear similar to what follows, substituting a unique value wherever "####" appears:
+    </p>
+
+    <div><pre><var> Final URL </var> = <var> https://api.yelp.com/v2/search? </var> + <var> &amp;parameter_1=value_1</var> + <var> &amp;paramter_2=value_2</var> + <var> &amp;paramter_n=value_n</var> + <var> &amp;oauth_token_secret=####</var> + <var> &amp;oauth_consumer_secret=####</var> + <var> &amp;oauth_consumer_key=####</var> + <var> &amp;oauth_token=####</var> + <var> &amp;oauth_signature_method=####</var> + <var> &amp;oauth_signature=####</var> + <var> &amp;oauth_timestamp=####</var> + <var> &amp;oauth_nonce=####</var></pre></div>
 
   <p class="lead">
-    Such a URL is relatively lengthy and even requires information in addition to what was available to us when generating the authentication key through Yelp's page. Therefore, we must set up a function that will facilitate this. While the Yelp API documentation provides sample code for several other languages, such as C#, Python, and Java, to name a few, there is no sample for use with JavaScript. Fortunately, it is not too difficult to translate this into JavaScript code, and there are 3rd party examples such as <a href ="https://arian.io/how-to-use-yelps-api-with-node/"> this one </a> by Arian Faurtosh, which help to demonstrate this. However, as several node modules must be installed for the code to run, we can only illustrate the code in this guide. If you would like to run this yourself on an instance of node, please make sure to first install the following modules. These will be required in order to run the sample code:
+    Such a URL is relatively lengthy and even requires information in addition to what was available to us when generating the authentication key through Yelp's page. Therefore, we must set up a function that will facilitate this. While the Yelp API documentation provides sample code for several other languages, such as C#, Python, and Java, to name a few, there is no sample for use with JavaScript. Fortunately, it is possible to use <mark>node.js</mark>, and there are 3rd party examples such as <a href ="https://arian.io/how-to-use-yelps-api-with-node/"> this one</a>, by Arian Faurtosh, to facilitate creating a search using OAuth 1.0a. We will illustrate this in the sample code, below, but note that it is necessary for several modules to be installed in order for the code to run, we can only illustrate the code in this guide. If you would like to run this yourself on an instance of node, please make sure to first install the following modules. In addition to having a proper instance of node.js set up, these modules would be required in order to run the sample code, and can be installed through the command line as follows:
   </p>
+
+  <br>
 
   <ul class="apiKeyList">
     <li><code>npm install --save oauth-signature</code></li>
@@ -93,55 +101,36 @@
     <li><code>npm install --save request</code></li>
   </ul>
 
+    <p class="lead">
+    Once we have properly configured our node setup, we can make a GET request to the Yelp API, such as in the very basic search shown below. 
+  </p>
+
     <div class="panel panel-default">
       <div class="panel-heading">
-    <h3 class="panel-title">Code sample: Search for 'food' in 'Corvallis' by submitting a GET request through Yelp's Search API:</h3>
+    <h3 class="panel-title">Code sample: Basic search for 'food' in 'Corvallis' by submitting a GET request through Yelp's Search API, to demonstrate how our final URL is constructed using the requisite items from the OAuth framework:</h3>
       </div>
       <div class="panel-body">
 
       <iframe width="100%" height="550" src="https://jsfiddle.net/mikey811fiddle/0whkdju2/embedded/js/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
       <br>
-
+      <p class="lead">
         Calling the above function will generate a URL as follows, with the "####" subsitituted by our personalized, unique values, as appropriate:
+      </p>
 
-        <br><br>
+      <div class="urlStyle">
         Base URL: <code>https://api.yelp.com/v2/search?</code><br>
-        Search parameters: <code>term=food&location=Corvallis</code><br><br>
-
-        <div><pre><var>Final URL</var>: <var> https://api.yelp.com/v2/search?term=food&amp;location=Corvallis&amp;%oauth_token_secret=####&amp;oauth_consumer_secret=####&amp;oauth_consumer_key=####&amp;oauth_token=####&amp;oauth_signature_method=####&amp;oauth_signature=####&amp;%oauth_timestamp=####&amp;%oauth_nonce=####</var></pre></div>
-
-        <br><br>
-        <div class="alert alert-danger" role="alert">Since there is added complication when using the required OAuth modules with jsfiddle.net, viewing the results is simplified by visiting Yelp's <a href ="https://www.yelp.com/developers/api_console">API Console</a>, which will simulate the call. Simply add 'Tian Fu Noodle' to the search field, and 'Corvallis' as the location. The response to the query can be viewed by clicking on the <mark>View Response</mark> button. On the next page, we will learn more about reading the response that is returned.
-        </div>
-
-      <div>Since the above search is so general, it will return 289 restaurants. Although this could be interesting if we really want to learn all about the restaurants in the area, it would be probably be more useful for us to make a more specific search, and narrow this information down. Therefore, we will conduct another search in the sample code below, where we constrain our search to only "Chinese Restaurants". We will also use the additional 'limit' parameter to narrow the number of results returned to only '10' restaurants. Furthermore, we will set the 'sort' parameter to a value of '2', which will return our restaurants in order of the highest rated. Lastly, we will use the 'radius_filter' parameter with a value of '8000'. This last parameter measures a distance from the center of the specified location, and returns only those businesses within that radius. Since it is measured in meters, our value of '8000' will limit the results to restaurants within approximately 5 miles of Corvallis.</div><br>
-
-    </div>
-  </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-    <h3 class="panel-title">Code sample: Search for 'Chinese food' within '8000' meters of 'Corvallis', limited to '10' results, sorted by '2' (highest rating, descending):</h3>
+        Search parameters: <code>term=food&location=Corvallis</code><br>
+        <span class="split">Authentication data: <code>oauth_token_secret=####&oauth_consumer_secret=####&oauth_consumer_key=####&oauth_token=####&oauth_signature_method=####&oauth_signature=####&oauth_timestamp=####&oauth_nonce=####</code><span><br><br>
       </div>
-      <div class="panel-body">
 
-      <iframe width="100%" height="550" src="https://jsfiddle.net/mikey811fiddle/w8r744gL/embedded/js/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-      <br>
-
-        Calling the above function will generate a URL as follows:
+        <div><pre><var>Final URL</var>: <var> https://api.yelp.com/v2/search?term=food&amp;location=Corvallis&amp;oauth_token_secret=####&amp;oauth_consumer_secret=####&amp;oauth_consumer_key=####&amp;oauth_token=####&amp;oauth_signature_method=####&amp;oauth_signature=####&amp;oauth_timestamp=####&amp;oauth_nonce=####</var></pre></div>
 
         <br><br>
-        Base URL: <code>https://api.yelp.com/v2/search?</code><br>
-        Search parameters: <code>Chinese+food&location=Corvallis&sort=2&limit=10&radius_filter=8000</code><br><br>
-
-        <div><pre><var>Final URL</var>: <var> https://api.yelp.com/v2/search?term=Chinese+food&amp;location=Corvallis&amp;sort=2&amp;limit=10&amp;radius_filter=8000&amp;%oauth_token_secret=####&amp;oauth_consumer_secret=####&amp;oauth_consumer_key=####&amp;oauth_token=####&amp;oauth_signature_method=####&amp;oauth_signature=####&amp;%oauth_timestamp=####&amp;%oauth_nonce=####</var></pre></div>
-
-        <br><br>
-        <div class="alert alert-danger" role="alert">Remember to separate each parameter/value pair by a comma. Note that there is neither a comma nor a semicolon after the last pair in the object.
+        <div class="alert alert-danger" role="alert">Since there is added complication when using the required OAuth modules with jsfiddle.net, creating a query and viewing the results is simplified by visiting Yelp's <a href ="https://www.yelp.com/developers/api_console">API Console</a>, which will act as an interface to simulate our call. To replicate the above search, simply add 'food' as the term in the search field, and 'Corvallis' as the location. The response to the query can be viewed by clicking on the <mark>View Response</mark> button. Later, in the <a class="nav-link" href="page5.html">Getting Responses</a> section of this guide, we will learn more about how the response is returned.
         </div>
 
-  </div>
+      <div><p class="lead">We are now able to assemble a URL to perform a basic query. However, since the above example was intended primarily to demonstrate the authentication process with OAuth 1.0a, our search for 'food' in 'Corvallis' will return a rather broad and unwieldy result. At the time of this writing, if you were to conduct such a search, it would display the results of 289 restaurants in Corvallis. This is quite a lot of information to have to try to comprehend, especially if we are hungry or in need of quick information for finding a business. Although this could be interesting if we really want to learn about all the restaurants in a given location, it would be probably be more useful for us to make a more specific search, and narrow this information down. On the next page, we will discover just how to do this using parameters provided by the <mark>Yelp Search API</mark>, as well as more details about how we, acting on the client side, will utilize the technology of <mark>Ajax</mark> to interact with the server for an efficient outcome in our search.</div>
 
 </div>
 
