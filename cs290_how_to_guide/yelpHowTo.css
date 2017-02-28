@@ -130,10 +130,14 @@ pre {
 iframe {
   width: 100%;
   border: 0;
-  overflow: scroll;
-  -webkit-overflow-scrolling: touch;
-  padding: 1px;
 }
+
+scroll-wrapper {
+  width: auto;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
+}
+
 .btn {
     padding: 3px 5px;
     border: 0 none;
