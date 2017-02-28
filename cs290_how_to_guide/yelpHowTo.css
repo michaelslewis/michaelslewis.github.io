@@ -159,8 +159,7 @@ iframe {
 
 .yelpDev {
   display: block;
-  margin: auto;
-  padding: 1px;
+  width: 100%;
 }
 
 .panel.panel-default {
