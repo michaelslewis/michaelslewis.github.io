@@ -132,12 +132,6 @@ iframe {
   border: 0;
 }
 
-scroll-wrapper {
-  width: auto;
-  -webkit-overflow-scrolling: touch;
-  overflow-y: scroll;
-}
-
 .btn {
     padding: 3px 5px;
     border: 0 none;
