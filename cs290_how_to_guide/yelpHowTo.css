@@ -130,8 +130,9 @@ pre {
 iframe {
   width: 100%;
   border: 0;
-  margin: auto;
   overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  padding: 1px;
 }
 .btn {
     padding: 3px 5px;
@@ -161,7 +162,8 @@ iframe {
 .yelpDev {
   display: block;
   margin: auto;
-  width: auto;
+  width: 100%;
+  padding: 1px;
 }
 
 .panel.panel-default {
