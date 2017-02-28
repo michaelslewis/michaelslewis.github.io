@@ -159,7 +159,7 @@ iframe {
 
 .yelpDev {
   display: block;
-  width: 100%;
+  width: auto;
 }
 
 .panel.panel-default {
