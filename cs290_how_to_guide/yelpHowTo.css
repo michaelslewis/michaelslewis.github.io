@@ -163,6 +163,11 @@ iframe {
   margin: auto;
 }
 
+.yelpDev {
+  display: block;
+  width: 50%;
+}
+
 .panel.panel-default {
     padding: 20px;
     border-color: cyan;
@@ -202,6 +207,10 @@ iframe {
 
 .paramList {
   font-weight: bold;
+}
+
+.paramList li{
+  padding-bottom: 10px;
 }
 
 .inlineImage {

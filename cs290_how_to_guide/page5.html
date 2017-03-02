@@ -54,7 +54,7 @@
 
       <br><br>
 
-      I had initially noticed the Tian Fu Noodle restaurant as its name was the very first result out of 289 businesses that were returned in our original 'food' query. As an e-Campus student and a noodle-lover, I would like to know more about this restaurant for any visits I may make to Oregon State University in the future. The data that is returned to us from our queries arrives in the <mark>JSON</mark> format. As mentioned on the previous page, although JSON's syntax is not identical, it is close in appearance to the JavaScript Object Notation that we used to define the parameters of our queries. Here is the response that is returned from our query for Tian Fu Noodle:
+      I had initially noticed the Tian Fu Noodle restaurant as its name was the very first result out of 289 businesses that were returned in our original 'food' query. As an e-Campus student and a noodle-lover, I would like to know more about this restaurant for any visits I may make to Oregon State University in the future. The data that is returned to us from our queries arrives in the <mark>JSON</mark> format. As mentioned on the previous page, although JSON's syntax is not identical, it is close in appearance to the JavaScript Object Notation that we used to define the parameters of our queries. On the previous page, I provided a link to view the response from our query for Tian Fu Noodle as raw, unparsed text. Here is the same response as it would appear with each parameter name/value pair, as parsed onto separate lines for better readability:
 
 
     <div class="panel panel-default">
@@ -68,25 +68,23 @@
       <br><br>
 
     <p class="lead">
-      Please scroll through the code above while observing the parameter/value pairs that were returned. Much of the data may look familar, such as the address, telephone number, and the star rating. Other parameters included in our response include:
+      Please scroll through the response above while observing the parameter name/value pairs that were returned. Much of the data may look familar, such as the address, telephone number, and the star rating. Other parameters included in our response include:
 
       <br><br>
 
     <div class="paramList">
       <ul>
-        <li>The business category: "Chinese"</li>
+        <li>The restaurant category: "Chinese"</li>
         <li>A subcategory: "Noodles"</li>
         <li>The business location, including its address in the city of "Corvallis" and the state of "OR"</li>
         <li>The longitude and latitude of the business</li>
         <li><span class="split">A snippet of text returned from one of the reviews. In the result from our query, this returns the text: <code>"YAAAAASSS. My roommate took me here to get lunch and it is truly delicious! I just moved here and was kind of missing some good asian food. The restaurant..."</code></span></li>
-        <li><span class="inlineImage">An image representing the business's star rating: <img class="yelpDev" src=https://s3-media3.fl.yelpcdn.com/assets/2/www/img/22affc4e6c38/ico/stars/v1/stars_large_5.png alt="5 Star Rating"></span></li>
-        <li><span class="inlineImage">An image taken from the business, if available: <img class="yelpDev" src=https://s3-media4.fl.yelpcdn.com/bphoto/GqLVAqzXHGYjkbYsblTDQg/ms.jpg alt="5 Star Rating"></span></li>
+        <li><span class="inlineImage">An image representing the business's star rating: <img class="yelpFood" src=https://s3-media3.fl.yelpcdn.com/assets/2/www/img/22affc4e6c38/ico/stars/v1/stars_large_5.png alt="5 Star Rating"></span></li>
+        <li><span class="inlineImage">An image for the business (in this case, it appears to be one of the dishes that they serve): <img class="yelpFood" src=https://s3-media4.fl.yelpcdn.com/bphoto/GqLVAqzXHGYjkbYsblTDQg/ms.jpg alt="5 Star Rating"></span></li>
       </ul>
     </div>
 
-      <br>
-
-    <p class="lead">As noted previously, Yelp provides an index to the search parameters in the <a href ="https://www.yelp.com/developers/documentation/v2/search_api/"> Search API </a> tab of their documentation page. The parameters above are only a small sample of the possibilities that can be returned, depending on the search query and the results.
+    <p class="lead">As noted previously, Yelp provides an index to the search parameters in the <a href ="https://www.yelp.com/developers/documentation/v2/search_api/" target="_blank"> Search API </a> tab of their documentation page. The parameters above are only a small sample of the possibilities that can be returned, depending on the search query and the results.
         <br><br>
 
         <div class="alert alert-danger" role="alert">

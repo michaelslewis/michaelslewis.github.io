@@ -50,7 +50,7 @@
 
   <h2 class="sectionHead" id="gettingResponses"> Yelp's Search API</h2>
   <p class="lead">
-      While the sample code on the previous page was very basic, returning relatively broad results of 'food' located in 'Corvallis', primarily as a means to demonstrate the setup of OAuth, the Yelp Search API provides a myriad of parameters to allow us to further refine our results. Yelp provides these parameters in the <a href ="https://www.yelp.com/developers/documentation/v2/search_api/"> Search API </a> tab of their documentation page.
+      While the sample code on the previous page was very basic, returning relatively broad results of 'food' located in 'Corvallis', primarily as a means to demonstrate the setup of OAuth, the Yelp Search API provides a myriad of parameters to allow us to further refine our results. Yelp provides these parameters in the <a href ="https://www.yelp.com/developers/documentation/v2/search_api/" target="_blank"> Search API </a> tab of their documentation page.
 
       <br>
 
@@ -61,9 +61,13 @@
       </dl>
 
     <p class="lead">
-      For the most part, aside from setting the 'location' parameter, the 'term' parameter will likely be our most commonly used parameter. This can be set to general values such as the 'food' search from the previous sample code. But Yelp becomes much more powerful when we refine or combine terms. For example, instead of the term 'food', we could specify 'Chinese food'. 
+      In general, aside from setting the 'location' parameter, the 'term' parameter will likely be our most commonly used parameter for these searches. This can be set to general values such as the 'food' search from the previous sample code. But Yelp becomes much more powerful when we refine or combine terms. For example, instead of the term 'food', we could specify 'Chinese food'. 
 
-      In the following sample code, we will conduct a more advanced search, where we constrain our search to only "Chinese Restaurants". We will also use the additional 'limit' parameter to narrow the number of results returned to only '10' restaurants. Furthermore, we will set the 'sort' parameter to a value of '2', which will return our restaurants in order of the highest rated. Lastly, we will use the 'radius_filter' parameter with a value of '8000'. This last parameter measures a distance from the center of the specified location, and returns only those businesses within that radius. Since it is measured in meters, our value of '8000' will limit the results to restaurants within approximately 5 miles of Corvallis:</div><br>
+      In the following sample code, we will conduct a more advanced search, where we constrain our search to only "Chinese Restaurants". We will also use the additional 'limit' parameter to narrow the number of results returned to only '10' restaurants. Furthermore, we will set the 'sort' parameter to a value of '2', which will return our restaurants in order of the highest rated. Lastly, we will use the 'radius_filter' parameter with a value of '8000'. This last parameter measures a distance from the center of the specified location, and returns only those businesses within that radius. Since it is measured in meters, our value of '8000' will limit the results to restaurants within approximately 5 miles of Corvallis.</div>
+
+    <p class="lead">
+      For this, we will make another JavaScript file with the script that we want to use. Create a new js file in the same directory as the last one. I have titled mine as “example_2.js”. Again, we will be hardcoding our consumer key, consumer secret, token, and token secret into that file. We will also be hardcoding the parameter/values, as indicated above, into that file. As with the previous example, you must substitute your own unique consumer/token/secret values for the placeholders I have included, which appear as ‘####’ in the sample, below:
+    </p>
 
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -71,34 +75,46 @@
       </div>
       <div class="panel-body">
 
-      <iframe width="100%" height="550" src="https://jsfiddle.net/mikey811fiddle/w8r744gL/embedded/js/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+      <iframe width="100%" height="550" src="https://jsfiddle.net/mikey811fiddle/w8r744gL/5/embedded/js/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+     <br><br>
+    <p class="lead">
+      After we save the above code, we can execute it by entering the following: <code>node example_2.js</code>. In the sample code  above, this will call our search and return the response as console output. For the purpose of this demonstration, I have modified the lines in the latter section of the code to listen to an open port (in this case, '26597'), so that the console output of the response will be returned by the function and will appear in the browser. The modified code appears as follows:</p>
+
+      <br><br>
+      <iframe width="100%" height="550" src="https://jsfiddle.net/mikey811fiddle/w8r744gL/6/embedded/js/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+      <br><br>
+      <div class="alert alert-danger" role="alert"><span class="lead">If you are signed into the OSU VPN, then the above modification will allow you to observe the response from this query in your browser (as raw, unparsed text) at <a href="http://flip3.engr.oregonstate.edu:26597/" target="_blank">http://flip3.engr.oregonstate.edu:26597/</a>.</span></div>
+
       <br>
       <p class="lead">
-
-        Calling the above function will generate a URL as follows:
+        The query that is sent by the above function to the API would appear as follows, with the "####" subsitituted by our personalized, unique values, as appropriate:
       </p>
 
       <div class="urlStyle">
         <span class="split">Base URL: <code>https://api.yelp.com/v2/search?</code></span><br>
-        <span class="split">Search parameters: <code>Chinese+food&location=Corvallis&sort=2&limit=10&radius_filter=8000</code></span><br>
+        <span class="split">Search parameters: <code>term=Chinese+food&location=Corvallis&sort=2&limit=10&radius_filter=8000</code></span><br>
         <span class="split">Authentication data: <code>oauth_token_secret=####&oauth_consumer_secret=####&oauth_consumer_key=####&oauth_token=####&oauth_signature_method=####&oauth_signature=####&oauth_timestamp=####&oauth_nonce=####</code><span><br><br>
       </div>
 
         <div><pre><var>Final URL</var>: <var> https://api.yelp.com/v2/search?term=Chinese+food&amp;location=Corvallis&amp;sort=2&amp;limit=10&amp;radius_filter=8000&amp;oauth_token_secret=####&amp;oauth_consumer_secret=####&amp;oauth_consumer_key=####&amp;oauth_token=####&amp;oauth_signature_method=####&amp;oauth_signature=####&amp;oauth_timestamp=####&amp;oauth_nonce=####</var></pre></div>
 
         <br><br>
-        <div class="alert alert-danger" role="alert">Our parameter/value pairs are defined within a JavaScript object, using <mark>JavaScript Object Notation</mark>. Remember to separate each parameter/value pair by a comma. Also, please note that there is neither a comma nor a semicolon after the last pair in the object. Lastly, while this format may appear similar to the JSON format (which we will discuss further on the next page), it is not identical. Unlike the notation we use for an object in the JavaScript language, the format used for JSON is intended for data exchange and independent of language, so it will require certain syntactical differences, including the use and placement of quotation marks.
+          <p class="lead">Our parameter/value pairs are defined within a JavaScript object, using <mark>JavaScript Object Notation</mark>. Remember to separate each parameter/value pair by a comma. Also, please note that there is neither a comma nor a semicolon after the last pair in the object. Lastly, while this format may appear similar to the JSON format (which we will discuss further on the next page), it is not identical. Unlike the notation we use for an object in the JavaScript language, the format used for JSON is intended for data exchange and independent of language, so it will require certain syntactical differences, including the use and placement of quotation marks.
         </div>
       </div>
 
       <br>
 
-    </div>
-
     <br>
 
     <p class="lead">
-    In addition to searching for restaurants within a particular category such as 'Chinese food', we can also specify a known establishment, such as "Tian Fu Noodle", in order to retrieve a response that gives ratings, reviews, and other useful information, just for that specific business. In the next sample code, let's formulate a request using the search term 'Tian Fu Noodle', again keeping our location as 'Corvallis', in order to search for this specific restaurant. Again, I will demonstrate the code for this below on jsfiddle.net:
+    In addition to searching for restaurants within a particular category such as 'Chinese food', we can also specify a known establishment, such as "Tian Fu Noodle", in order to retrieve a response that gives ratings, reviews, and other useful information, just for that specific business. In the next sample code, let's formulate a request using the search term 'Tian Fu Noodle', again keeping our location as 'Corvallis', in order to search for this specific restaurant.
+
+    <p class="lead">
+      Let's make one more JavaScript file with the script that we want to use. Create a new js file in the same directory as the last one. I have titled mine as “example_3.js”. Once again, we will be hardcoding our consumer key, consumer secret, token, and token secret into that file. We will also be hardcoding the parameter/values, as indicated above, into that file. As with the previous example, you must substitute your own unique consumer/token/secret values for the placeholders I have included, which appear as ‘####’ in the sample, below:
+    </p>
 
     <br><br>
 
@@ -108,12 +124,22 @@
       </div>
       <div class="panel-body">
 
-      <iframe width="100%" height="550" src="https://jsfiddle.net/mikey811fiddle/w6zkow3k/4/embedded/js/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+      <iframe width="100%" height="550" src="https://jsfiddle.net/mikey811fiddle/w6zkow3k/5/embedded/js/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+     <br><br>
+    <p class="lead">
+      After we save the above code, we can execute it as follows: <code>node example_3.js</code>. In the sample code above, this will call our search and return the response as console output. For the purpose of this demonstration, I have modified the lines in the latter section of the code to listen to an open port (in this case, '26598'), so that the console output of the response will be returned by the function and will appear in the browser. The modified code appears as follows:</p>
+
+      <br><br>
+      <iframe width="100%" height="550" src="https://jsfiddle.net/mikey811fiddle/w6zkow3k/6/embedded/js/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+      <br><br>
+      <div class="alert alert-danger" role="alert"><span class="lead">If you are signed into the OSU VPN, then the above modification will allow you to observe the response from this query in your browser (as raw, unparsed text) at <a href="http://flip3.engr.oregonstate.edu:26598/" target="_blank">http://flip3.engr.oregonstate.edu:26598/</a>.</span></div>
+
 
       <br>
       <p class="lead">
-
-        Calling the above function will generate a URL as follows, with the "####" subsitituted by our personalized, unique values, as appropriate:
+        The query that is sent by the function to the API would appear as follows, with the "####" subsitituted by our personalized, unique values, as appropriate:
       </p>
 
       <div class="urlStyle">
@@ -126,7 +152,7 @@
 
       <br><br>
 
-        <div class="alert alert-danger" role="alert">Notice how again in this sample code, we have changed only the contents of the defaultParameters object from how it appeared in our previous sample code. In this case, we have used the term "Tian Fu Noodle". As before, by modifying or adding parameters to this JavaScript object, we have changed our search result.</div>
+        <p class="lead">Notice how again in this sample code, we have changed only the contents of the defaultParameters object from how it appeared in our previous sample code. In this case, we have used the term "Tian Fu Noodle". As before, by modifying or adding parameters to this JavaScript object, we have changed our search result.
 
       </div>
 
