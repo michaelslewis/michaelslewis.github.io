@@ -83,7 +83,7 @@
 
     <li><code>oauth_signature_method</code>: HMAC-SHA1</li>
 
-    <li><code>oauth_signature</code>: The request signature generated using both our consumer and token secrets (we obtain this using a function, as in our sample code, below).</li>
+    <li><code>oauth_signature</code>: The request signature generated using both our consumer and token secrets. We can obtain this using a script, which I will demonstrate in the upcoming sample code examples.</li>
 
     <li><code>oauth_timestamp</code>: A timestamp of the request, measured in seconds since the time 00:00:00 UTC on 1 January 1970 (a starting point known as the 'Unix epoch')).</li>
 
@@ -91,7 +91,7 @@
   </ul>
     <br>
 
-    <p class="lead">The above items may seem somewhat daunting, especially for someone who may be just setting out on their journey in working with API's or web development. The sheer length of the URL, in addition to the necessity of autogenerating particulars such as the signature and timestamp each time the API is called, make the call difficult and impractical to formulate without using a specialized JavaScript function like the one depicted in the sample code, toward the bottom of this page. If we were to examine the URL that the API requires for each query, it would be formatted as follows, depending on the parameters to be sent, and substituting a unique value wherever "####" appears:
+    <p class="lead">The above items may seem somewhat daunting, especially for someone who may be just setting out on their journey in working with API's or web development. The sheer length of the URL, in addition to the necessity of autogenerating particulars such as the signature and timestamp each time the API is called, make the call difficult and impractical to formulate without using a specialized JavaScript script like the one depicted in the sample code, towards the bottom of this page. If we were to examine the URL that the API requires for each query, it would be formatted as follows, depending on the parameters to be sent, and substituting a unique value wherever "####" appears:
     </p>
 
     <div><pre><var> Final URL </var> = <var> https://api.yelp.com/v2/search? </var> + <var> &amp;parameter_1=value_1</var> + <var> &amp;parameter_2=value_2</var> + <var> &amp;parameter_n=value_n</var> + <var> &amp;oauth_token_secret=####</var> + <var> &amp;oauth_consumer_secret=####</var> + <var> &amp;oauth_consumer_key=####</var> + <var> &amp;oauth_token=####</var> + <var> &amp;oauth_signature_method=####</var> + <var> &amp;oauth_signature=####</var> + <var> &amp;oauth_timestamp=####</var> + <var> &amp;oauth_nonce=####</var></pre></div>
@@ -134,7 +134,7 @@
 
       <br><br>
     <p class="lead">
-      After we save the above code, we can execute it as follows: <code>node example_1.js</code>. In the sample code above, this will call our search and return the response as console output. For the purpose of this demonstration, I have modified the lines in the latter section of the code to listen to an open port (in this case, '26596'), so that the console output of the response will be returned by the function, and can be displayed in your browser. The modified code appears as follows:</p>
+      After we save the above code, we can execute it as follows: <code>node example_1.js</code>. In the sample code above, this will call our search and return the response as console output. For the purpose of this demonstration, I have modified the lines in the latter section of the code to listen to an open port (in this case, '26596'), so that the console output of the response will be returned by the function call at the end of the above script, and can be displayed in your browser. The modified code appears as follows:</p>
 
       <br><br>
       <iframe width="100%" height="550" src="https://jsfiddle.net/mikey811fiddle/qhL4x5dx/13/embedded/js/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
@@ -144,7 +144,7 @@
 
       <br>
       <p class="lead">
-        Calling the above function will send a request to the Yelp Search API (more about this on the next page). The query that is sent by the function to the API would appear as follows, with the "####" subsitituted by our personalized, unique values, as appropriate:
+        Calling the search method in the above script will send a request to the Yelp Search API (more about this on the next page). The query that is sent by the above code would appear as follows to the API, with the "####" subsitituted by our personalized, unique values, as appropriate:
       </p>
       <br><br>
 
