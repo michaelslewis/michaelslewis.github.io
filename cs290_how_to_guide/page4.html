@@ -50,23 +50,25 @@
 
   <h2 class="sectionHead" id="gettingResponses"> Yelp's Search API</h2>
   <p class="lead">
-      While the sample code on the previous page was very basic, returning relatively broad results of 'food' located in 'Corvallis', primarily as a means to demonstrate the setup of OAuth, the Yelp Search API provides a myriad of parameters to allow us to further refine our results. Yelp provides these parameters in the <a href ="https://www.yelp.com/developers/documentation/v2/search_api/" target="_blank"> Search API </a> tab of their documentation page.
+      The sample code on the previous page was very basic, returning relatively broad results of 'food' located in 'Corvallis', in order to demonstrate the OAuth authentication process for Yelp's API. For more practical searches, the Yelp Search API provides a myriad of parameters to allow us to further refine our results. Yelp provides these parameters in the <a href ="https://www.yelp.com/developers/documentation/v2/search_api/" target="_blank"> Search API </a> tab of their documentation page.
 
       <br>
 
       <dl class="dl-horizontal">
       <dt>About Ajax</dt>
-      <dd>When we run our search, it is processed asynchronously, using Ajax. Ajax stands for <mark>Asynchronous Javascript and XML</mark>, but for our purposes, the "Asynchronous JavaScript" part is the most relevant aspect of the name. While the response data can be received in the format of <mark>XML</mark>, we will be using <mark>JSON</mark> (more about this on the following page). The Ajax technology is popular because it allows a GET request from the client to be made to the server and processed simultaneously, as the rest of the page loads. One of the main benefits is efficiency. For example, if we run a search, and then change a portion of that and run a subsequent search, that second search does not need to reload all of the information, only the part that was changed. In contrast with searches that are merely synchronous, asynchronous calls can load much faster, which may result in a much better experience for the end user.
+      <dd>When we run our search, it is processed asynchronously, using Ajax. Ajax stands for <mark>Asynchronous Javascript and XML</mark>, but for our purposes, the "Asynchronous JavaScript" part is the most relevant aspect of the name. While the response data can be received in the format of <mark>XML</mark>, we will be using <mark>JSON</mark> (more about this on the following page). The Ajax technology is popular because it allows a GET request from the client to be made to the server and processed simultaneously, as the rest of the page loads. One of the main benefits is efficiency. For example, if we run a search, and then change a portion of that and run a subsequent search, that second search does not need to reload all of the information, but instead, only the part that was changed. In contrast with searches that are merely synchronous, asynchronous calls can load much faster, which may result in a much better experience for the end user.
        </dd>
       </dl>
 
     <p class="lead">
-      In general, aside from setting the 'location' parameter, the 'term' parameter will likely be our most commonly used parameter for these searches. This can be set to general values such as the 'food' search from the previous sample code. But Yelp becomes much more powerful when we refine or combine terms. For example, instead of the term 'food', we could specify 'Chinese food'. 
+      In general, aside from setting the 'location' parameter, the 'term' parameter will likely be our most commonly used parameter for these searches. This can be set to general values such as the 'food' search from the previous sample code. But Yelp becomes much more powerful when we refine or combine terms. For example, instead of the term 'food', we could specify a particular type of food, such as 'Chinese food'.
 
-      In the following sample code, we will conduct a more advanced search, where we constrain our search to only "Chinese Restaurants". We will also use the additional 'limit' parameter to narrow the number of results returned to only '10' restaurants. Furthermore, we will set the 'sort' parameter to a value of '2', which will return our restaurants in order of the highest rated. Lastly, we will use the 'radius_filter' parameter with a value of '8000'. This last parameter measures a distance from the center of the specified location, and returns only those businesses within that radius. Since it is measured in meters, our value of '8000' will limit the results to restaurants within approximately 5 miles of Corvallis.</div>
+      <br><br>
+
+      In the following sample code, we will conduct a more advanced search, where we constrain our search to "Chinese food". We will also use the additional 'limit' parameter to narrow the number of results returned to only '10' restaurants. Furthermore, we will set the 'sort' parameter to a value of '2', which will return our restaurants in order of the highest rating, descending. Lastly, we will use the 'radius_filter' parameter with a value of '8000'. This last parameter measures a distance from the center of the specified location, and returns only those businesses within that radius. Since it is measured in meters, our value of '8000' will limit the results to restaurants within approximately 5 miles of Corvallis.</div>
 
     <p class="lead">
-      For this, we will make another JavaScript file with the script that we want to use. Create a new js file in the same directory as the last one. I have titled mine as “example_2.js”. Again, we will be hardcoding our consumer key, consumer secret, token, and token secret into that file. We will also be hardcoding the parameter/values, as indicated above, into that file. As with the previous example, you must substitute your own unique consumer/token/secret values for the placeholders I have included, which appear as ‘####’ in the sample, below:
+      For this, we will make another JavaScript file with the script that we want to use. Create a new file in the same directory as the last one. I have titled mine as “example_2.js”. Again, we will be hardcoding our consumer key, consumer secret, token, and token secret into that file. We will also be hardcoding the parameter name/values, as indicated above, into that file. As with the previous example, you must substitute the unique values you generated at Yelp's Manage API Keys page for the placeholders I have included, which appear as ‘####’ in the sample, below:
     </p>
 
     <div class="panel panel-default">
@@ -101,7 +103,7 @@
         <div><pre><var>Final URL</var>: <var> https://api.yelp.com/v2/search?term=Chinese+food&amp;location=Corvallis&amp;sort=2&amp;limit=10&amp;radius_filter=8000&amp;oauth_token_secret=####&amp;oauth_consumer_secret=####&amp;oauth_consumer_key=####&amp;oauth_token=####&amp;oauth_signature_method=####&amp;oauth_signature=####&amp;oauth_timestamp=####&amp;oauth_nonce=####</var></pre></div>
 
         <br><br>
-          <p class="lead">Our parameter/value pairs are defined within a JavaScript object, using <mark>JavaScript Object Notation</mark>. Remember to separate each parameter/value pair by a comma. Also, please note that there is neither a comma nor a semicolon after the last pair in the object. Lastly, while this format may appear similar to the JSON format (which we will discuss further on the next page), it is not identical. Unlike the notation we use for an object in the JavaScript language, the format used for JSON is intended for data exchange and independent of language, so it will require certain syntactical differences, including the use and placement of quotation marks.
+          <p class="lead">Our parameter name/value pairs are defined within a JavaScript object, using <mark>JavaScript Object Notation</mark>. Remember to separate each parameter/value pair by a comma. Also, please note that there is neither a comma nor a semicolon after the last pair in the object. Lastly, while this format may appear similar to the JSON format (which we will discuss further on the next page), it is not identical. Unlike the notation we use for an object in the JavaScript language, the format used for JSON is intended for data exchange and independent of language, so it will require certain syntactical differences, including the use and placement of quotation marks.
         </div>
       </div>
 
@@ -110,10 +112,10 @@
     <br>
 
     <p class="lead">
-    In addition to searching for restaurants within a particular category such as 'Chinese food', we can also specify a known establishment, such as "Tian Fu Noodle", in order to retrieve a response that gives ratings, reviews, and other useful information, just for that specific business. In the next sample code, let's formulate a request using the search term 'Tian Fu Noodle', again keeping our location as 'Corvallis', in order to search for this specific restaurant.
+    In addition to searching for restaurants within a particular category, such as 'Chinese food', we can also specify a known establishment, such as 'Tian Fu Noodle', in order to retrieve a response that gives ratings, reviews, and other useful information, just for that specific business. In the next sample code, let's formulate a request using the search term 'Tian Fu Noodle', again keeping our location as 'Corvallis', in order to search for this specific restaurant.
 
     <p class="lead">
-      Let's make one more JavaScript file with the script that we want to use. Create a new js file in the same directory as the last one. I have titled mine as “example_3.js”. Once again, we will be hardcoding our consumer key, consumer secret, token, and token secret into that file. We will also be hardcoding the parameter/values, as indicated above, into that file. As with the previous example, you must substitute your own unique consumer/token/secret values for the placeholders I have included, which appear as ‘####’ in the sample, below:
+      Let's make one more JavaScript file with the script that we want to use. Create a new file in the same directory as the last one. I have titled mine as “example_3.js”. Once again, we will be hardcoding our consumer key, consumer secret, token, and token secret into that file. We will also be hardcoding the parameter/values, as indicated above, into that file. As with the previous examples, you must substitute the unique values you generated at Yelp's Manage API Keys page for the placeholders I have included, which appear as ‘####’ in the sample, below:
     </p>
 
     <br><br>
@@ -128,13 +130,13 @@
 
      <br><br>
     <p class="lead">
-      After we save the above code, we can execute it as follows: <code>node example_3.js</code>. In the sample code above, this will call our search and return the response as console output. For the purpose of this demonstration, I have modified the lines in the latter section of the code to listen to an open port (in this case, '26598'), so that the console output of the response will be returned by the <mark>end</mark> function, and can be displayed in your browser. The modified code appears as follows:</p>
+      After we save the above code, we can execute it as follows: <code>node example_3.js</code>. In the sample code above, this will call our search and return the response as console output. For the purpose of this demonstration, I have modified the lines in the latter section of the code to listen to an open port (in this case, '26598'), so that the console output of the response will be returned by the function, and can be displayed in your browser. The modified code appears as follows:</p>
 
       <br><br>
       <iframe width="100%" height="550" src="https://jsfiddle.net/mikey811fiddle/w6zkow3k/6/embedded/js/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
       <br><br>
-      <div class="alert alert-danger" role="alert"><span class="lead">If you are signed into the OSU VPN, you may view the response from from the above query in your browser (as raw, unparsed text) at <a href="http://flip3.engr.oregonstate.edu:26598/" target="_blank">http://flip3.engr.oregonstate.edu:26598/</a>.</span></div>
+      <div class="alert alert-danger" role="alert"><span class="lead">If you are signed into the OSU VPN, you may view the response from the above query in your browser (as raw, unparsed text) at <a href="http://flip3.engr.oregonstate.edu:26598/" target="_blank">http://flip3.engr.oregonstate.edu:26598/</a>.</span></div>
 
 
       <br>
@@ -152,7 +154,7 @@
 
       <br><br>
 
-        <p class="lead">Notice how again in this sample code, we have changed only the contents of the defaultParameters object from how it appeared in our previous sample code. In this case, we have used the term "Tian Fu Noodle". As before, by modifying or adding parameters to this JavaScript object, we have changed our search result.
+        <p class="lead">Notice how again in this sample code, we have changed only the contents of the search object, from how it appeared in our previous sample code. In this case, we have used the term "Tian Fu Noodle" and removed all of the other parameter name/values, except for the location of "Corvallis". As before, by modifying or adding parameters to this JavaScript object, we have changed our search result.
 
       </div>
 
@@ -170,7 +172,7 @@
 
 
 <footer>
-  <div class="container">               
+  <div class="container">
     <ul class="pager">
       <li><a href="page3.html">Back</a></li>
       <li><a href="page5.html">Next</a></li>

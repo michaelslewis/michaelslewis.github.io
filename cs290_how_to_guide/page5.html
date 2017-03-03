@@ -50,11 +50,11 @@
 
   <h2 class="sectionHead" id="gettingResponses">JSON and the query response</h2>
   <p class="lead">
-      On the previous page, we modified our search in an attempt to retrieve information on Tian Fu Noodle, located in Corvallis. Until now, the response to that request, and especially to the earlier 'food' query, have appeared as lengthy blobs of semi-formatted text that is relatively difficult to read. On this page, we will attempt to decipher those results.
+      On the previous page, we modified our search in an attempt to retrieve information on the business 'Tian Fu Noodle', which is a restaurant located in Corvallis. Until now, the responses to our requests (especially to the earlier 'food' query that displayed 20 of 289 results), have appeared as lengthy blobs of text that are relatively difficult to read. On this page, we will attempt to better decipher those results.
 
       <br><br>
 
-      I had initially noticed the Tian Fu Noodle restaurant as its name was the very first result out of 289 businesses that were returned in our original 'food' query. As an e-Campus student and a noodle-lover, I would like to know more about this restaurant for any visits I may make to Oregon State University in the future. The data that is returned to us from our queries arrives in the <mark>JSON</mark> format. In my sample code, I call the <code>stringify</code> method to convert the object to the text we see. As mentioned on the previous page, although JSON's syntax is not identical, it is close in appearance to the JavaScript Object Notation that we used to define the parameters of our queries. On the previous page, I provided a link to view the response from our query for Tian Fu Noodle as raw, unparsed text. Here is the same response as it would appear with each parameter name/value pair, as parsed onto separate lines for better readability:
+      I had initially noticed the Tian Fu Noodle restaurant because its name was the very first result out of 289 businesses that were returned in our original 'food' query. This was because by default, the Yelp Search API returns results ordered by highest rating, even if we do not explicitly specify it as we did in our example2.js file. As an e-Campus student and a noodle-lover, I would like to know more about this restaurant for any visits I may make to Oregon State University in the future. The data that is returned to us from our queries arrives in the <mark>JSON</mark> format. In my sample code, I call a method called <code>stringify</code> to convert the object that is returned from our query to the text we see. As mentioned on the previous page, although JSON's syntax is not identical, it is close in appearance to the JavaScript Object Notation that we used to define the parameters of our queries. On the previous page, I provided a link to view the response from our query for 'Tian Fu Noodle' as raw, unparsed text. Here is the same response as it would appear with each parameter name/value pair, as parsed onto separate lines for better readability:
 
 
     <div class="panel panel-default">
@@ -84,17 +84,17 @@
       </ul>
     </div>
 
-    <p class="lead">As noted previously, Yelp provides an index to the search parameters in the <a href ="https://www.yelp.com/developers/documentation/v2/search_api/" target="_blank"> Search API </a> tab of their documentation page. The parameters above are only a small sample of the possibilities that can be returned, depending on the search query and the results.
+    <p class="lead">As noted previously, Yelp provides an index to the search parameters in the <a href ="https://www.yelp.com/developers/documentation/v2/search_api/" target="_blank"> Search API </a> tab of their documentation page. The parameters above are only a small sample of the possibilities that can be returned, depending on the search query and the results. 
         <br><br>
 
         <div class="alert alert-danger" role="alert">
-        Note that JSON data can be parsed and organized for an application, such as a mobile app, so that a user may have immediate and efficient access to any of these fields. Depending on the web application, a response such as what we received above can be formatted in various ways, tailored however a developer may see fit.
+        Note that JSON data can be parsed and organized for an application, such as a mobile app, so that a user may have immediate and efficient access to any of these fields. Depending on the web application, a response such as what we received above can be formatted in various ways, tailored however a developer may see fit. If you would like to view further examples of searches in which the result of the query is parsed as above, please visit Yelp's aforementioned <a href ="https://www.yelp.com/developers/api_console" target="_blank">API Console</a>.
         </div>
 
       </div>
 
     <p class="lead">
-      We should now be able to formulate a search, send it as a GET request, and receive the JSON response. Through our examples, we have narrowed our search from nearly 300 restaurants, to a single restaurant that fit the criteria of what we were looking for, with a very promising 5-star rating. I hope that this guide may help you if you whether you are specifically interested in the Yelp Search API, API’s in general, or looking for some delicious food while visiting Oregon State University. I look forward to an opportunity in the near future where I may visit the campus in Corvallis, so that I may be able to taste this result!
+      We should now be able to formulate a search, send it as a GET request, and receive the JSON response. Through our examples, we have narrowed our search from nearly 300 restaurants, to a single restaurant that fit the criteria of what we were looking for, with a very promising 5-star rating. I hope that this guide may be of help to you, whether you are specifically interested in the Yelp Search API, API’s in general, or just looking for some delicious food while visiting Oregon State University. I look forward to an opportunity in the near future where I can visit the campus in Corvallis, so that I may be able to taste this result!
       
     </div>
   </div>
@@ -108,7 +108,7 @@
   <script src="how-to-guide.js"></script>
 
     <footer>
-      <div class="container">               
+      <div class="container">
         <ul class="pager">
           <li><a href="page4.html">Back</a></li>
           <li><a href="page6.html">Next</a></li>
