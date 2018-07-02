@@ -520,7 +520,7 @@ iframe {
 .footer .fa-heart {
   color: #fb866a;
 }
-.latest video {
+div.video {
 max-width:95%;
 height:auto;
 display:block;
