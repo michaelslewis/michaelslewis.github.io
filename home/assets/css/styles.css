@@ -529,6 +529,7 @@ margin:0 auto;
 .video {
 width: /* More than element */;
 }
+}
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: 767px) {
   .header {
