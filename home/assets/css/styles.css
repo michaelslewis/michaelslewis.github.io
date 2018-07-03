@@ -524,7 +524,7 @@ video {
 max-width:100%;
 height:auto;
 display:block;
-margin:10 auto;
+margin:10px auto;
 }
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: 767px) {
