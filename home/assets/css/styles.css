@@ -453,11 +453,12 @@ iframe {
   margin-bottom: 0;
 }
 .cs .item .title {
-  font-size: 16px;
-  margin-top: 0;
+  color: #778492;
 }
 .cs .item .synopsis {
-    color: #999;
+  color: #999;
+  font-size: 16px;
+  margin-top: 0;
 }
 /* Language Section */
 .languages .item {
