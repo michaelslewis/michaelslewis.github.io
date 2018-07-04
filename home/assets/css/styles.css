@@ -447,7 +447,7 @@ iframe {
 }
 /* CS section */
 .cs .item {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 .cs .item:last-child {
   margin-bottom: 0;
