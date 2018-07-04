@@ -186,6 +186,10 @@ iframe {
   margin-right: 5px;
   font-size: 14px;
 }
+.section .courses {
+  color: #545e69;
+  font-size: 16px;
+}
 /* About Section */
 /* Latest Section */
 .latest .item {
@@ -441,6 +445,21 @@ iframe {
   font-weight: 600;
   padding-left: 25px;
 }
+/* CS section */
+.cs .item {
+  margin-bottom: 30px;
+}
+.cs .item:last-child {
+  margin-bottom: 0;
+}
+.cs .item .title {
+  color: #778492;
+}
+.cs .item .synopsis {
+  color: #999;
+  font-size: 16px;
+  margin-top: 0;
+}
 /* Language Section */
 .languages .item {
   margin-bottom: 15px;
@@ -472,60 +491,7 @@ iframe {
   color: #5f6b77;
 }
 .blog .item:last-child {
-  margin-bottom: 0;
-}
-/* List section */
-.list ul li {
-  margin-bottom: 10px;
-}
-.list ul li .fa {
-  margin-right: 5px;
-}
-.list ul li a {
-  color: #778492;
-}
-.list ul li a:hover {
-  color: #49515a;
-}
-/* Credits */
-.credits ul li {
-  margin-bottom: 10px;
-}
-.credits ul li .fa {
-  margin-right: 5px;
-}
-.credits ul li a {
-  color: #778492;
-}
-.credits ul li a:hover {
-  color: #49515a;
-}
-.credits .btn {
-  margin-bottom: 15px;
-}
-/* ======= Footer ======= */
-.footer {
-  background: #32383e;
-  color: #fff;
-  padding: 10px 0;
-}
-.footer .copyright {
-  line-height: 1.6;
-  color: #a1aab4;
-  font-size: 14px;
-}
-.footer a {
-  color: #fff;
-}
-.footer .fa-heart {
-  color: #fb866a;
-}
-video {
-max-width:100%;
-height:auto;
-display:block;
-margin:0 auto;
-padding-bottom: 30px;
+  margin-bottom: 0
 }
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: 767px) {
