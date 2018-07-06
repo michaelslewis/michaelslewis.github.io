@@ -145,7 +145,7 @@ span.gha-time {
 
 .gha-gravatar img {
   padding: 3px;
-  width: auto;
+  width: 100%;
   border: 1px solid #ddd;
   box-shadow: 1px 1px 3px #ccc;
 }
@@ -235,7 +235,7 @@ span.gha-time {
 .gha-gravatar-small {
   float: left;
   margin-right: 6px;
-  width: 30px;
+  width: 100%;
 }
 
 .gha-gravatar-commit {
