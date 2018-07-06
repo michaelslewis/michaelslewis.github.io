@@ -144,7 +144,7 @@ span.gha-time {
 }
 
 .gha-gravatar img {
-  padding: 3px;
+  padding: 0;
   width: 100%;
   border: 1px solid #ddd;
   box-shadow: 1px 1px 3px #ccc;
