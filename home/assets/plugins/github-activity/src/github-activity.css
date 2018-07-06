@@ -140,7 +140,7 @@ span.gha-time {
   margin-right: 10px;
   padding-right: 10px;
   max-width: 60px;
-  height: 67px;
+  height: auto;
 }
 
 .gha-gravatar img {
