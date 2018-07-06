@@ -137,14 +137,14 @@ span.gha-time {
 .gha-gravatar {
   display: inline;
   float: right;
-  margin-right: 5px;
-  padding-right: 5px;
+  margin-right: 10px;
+  padding-right: 20px;
   max-width: 60px;
-  height: auto;
+  height: 67px;
 }
 
 .gha-gravatar img {
-  padding: 0;
+  padding: 3px;
   width: 100%;
   border: 1px solid #ddd;
   box-shadow: 1px 1px 3px #ccc;
@@ -159,7 +159,6 @@ span.gha-time {
 
 
 .gha-activity.gha-small {
-  margin-top: 5px;
   font-weight: normal;
   font-size: 13px;
 }
@@ -168,20 +167,8 @@ span.gha-time {
   font-weight: normal;
 }
 
-.gha-activity.gha-small .gha-message {
-  float: left;
-  width: auto;
-  margin-right: 5px;
-  margin-top: 5px;
-}
-
 .gha-activity.gha-small span {
   font-size: 16px;
-}
-
-.gha-activity.gha-small .gha-time {
-  float: left;
-  margin-top: 6px;
 }
 
 .gha-activity:last-child {
@@ -233,13 +220,14 @@ span.gha-time {
 }
 
 .gha-gravatar-small {
-  float: right;
-  margin-right: 3px;
-  width: 15px;
+  float: left;
+  margin-right: 6px;
+  width: 30px;
 }
 
 .gha-gravatar-commit {
-  margin-bottom: 3px;
+  margin-bottom: -3px;
+  border-radius: 2px;
 }
 
 .gha-gravatar-user { float: left; }
