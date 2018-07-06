@@ -236,9 +236,9 @@ span.gha-time {
   display: inline-block;
   float: left;
   margin: 0 auto;
-  padding: 6px 5px 5px;
+  padding: 6px 6px 5px;
   color: #495961;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .gha-user-info a { color: #495961; }
