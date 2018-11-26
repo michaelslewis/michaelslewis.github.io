@@ -1,6 +1,6 @@
 {
-"companyName": "DefaultCompany",
-"productName": "Hydra Capstone Project",
+"companyName": "Team Hydra",
+"productName": "OSU CS 467 Capstone Project",
 "dataUrl": "Build.data.unityweb",
 "wasmCodeUrl": "Build.wasm.code.unityweb",
 "wasmFrameworkUrl": "Build.wasm.framework.unityweb",
