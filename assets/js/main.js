@@ -22,19 +22,18 @@ jQuery(document).ready(function($) {
     /* Bootstrap Tooltip for Skillset */
     $('.level-label').tooltip();
     
-    
     /* jQuery RSS - https://github.com/sdepold/jquery-rss */
-    /*
+    
     $("#rss-feeds").rss(
     
         //Change this to your own rss feeds
-        "https://feeds.feedburner.com/TechCrunch/startups",
+        "https://lewismic.home.blog/",
         
         {
         // how many entries do you want?
         // default: 4
         // valid values: any integer
-        limit: 3,
+        limit: 5,
         
         // the effect, which is used to let the entries appear
         // default: 'show'
@@ -53,7 +52,6 @@ jQuery(document).ready(function($) {
         
         }
     );
-    */
     
     /* Github Calendar - https://github.com/IonicaBizau/github-calendar */
     /* GitHubCalendar("#github-graph", "IonicaBizau"); */
