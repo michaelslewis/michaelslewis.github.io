@@ -27,7 +27,7 @@ jQuery(document).ready(function($) {
     $("#rss-feeds").rss(
     
         //Change this to your own rss feeds
-        "https://chrizandr.tumblr.com/rss",
+        "https://lewismic.home.blog/feed/",
         
         {
         // how many entries do you want?
