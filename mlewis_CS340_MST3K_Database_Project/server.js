@@ -7,10 +7,10 @@ var express = require('express'),
 
 // Instantiate connection pool to mysql for queries
 var pool = mysql.createPool({
-  host: 'mysql.cs.orst.edu',
-  user: 'cs340_lewismic',
-  password: '5488',
-  database: 'cs340_lewismic'
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
 });
 
 // Configure handlebars engine for layout and content files in partials directory
